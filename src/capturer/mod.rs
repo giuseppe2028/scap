@@ -12,7 +12,7 @@ pub enum Resolution {
     _480p,
     _720p,
     _1080p,
-    _1440p,
+    _1441p,
     _2160p,
     _4320p,
 
@@ -26,7 +26,7 @@ impl Resolution {
             Resolution::_480p => [640, ((640 as f32) / aspect_ratio).floor() as u32],
             Resolution::_720p => [1280, ((1280 as f32) / aspect_ratio).floor() as u32],
             Resolution::_1080p => [1920, ((1920 as f32) / aspect_ratio).floor() as u32],
-            Resolution::_1440p => [1440, ((1440 as f32) / aspect_ratio).floor() as u32],
+            Resolution::_1441p => [1440, ((1440 as f32) / aspect_ratio).floor() as u32],
             Resolution::_2160p => [3840, ((3840 as f32) / aspect_ratio).floor() as u32],
             Resolution::_4320p => [7680, ((7680 as f32) / aspect_ratio).floor() as u32],
             Resolution::Captured => {
