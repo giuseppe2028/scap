@@ -31,6 +31,16 @@ pub struct Display {
     pub raw_handle: core_graphics_helmer_fork::display::CGDisplay,
 }
 
+impl PartialEq<Self> for Display {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id
+    }
+}
+
+impl Eq for Display{
+
+}
+
 #[derive(Debug, Clone)]
 pub enum Target {
     Window(Window),
