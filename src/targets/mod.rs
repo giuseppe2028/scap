@@ -41,6 +41,12 @@ impl Eq for Display{
 
 }
 
+impl ToString for Display{
+    fn to_string(&self) -> String {
+        self.title.clone() + " " + get_target_dimensions(*Target::Display(self.clone()))
+    }
+}
+
 #[derive(Debug, Clone)]
 pub enum Target {
     Window(Window),
