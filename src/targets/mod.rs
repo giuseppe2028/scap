@@ -81,3 +81,18 @@ pub fn get_target_dimensions(target: &Target) -> (u64, u64) {
     #[cfg(target_os = "linux")]
     unreachable!();
 }
+
+pub fn get_all_displays() -> Vec<Display> {
+    // Esegui immediatamente scappare::get_all_targets() e filtra solo i Display
+    get_all_targets() // Chiama la funzione esistente per ottenere i target
+        .into_iter() // Crea un iteratore su tutti i target
+        .filter_map(|target| {
+            // Applica il filtro, accettando solo i target di tipo Display
+            if let Target::Display(display) = target {
+                Some(display) // Ritorna il Display se trovato
+            } else {
+                None // Ignora tutti gli altri tipi
+            }
+        })
+        .collect() // Raccogli i risultati filtrati in un Vec<Display>
+}
