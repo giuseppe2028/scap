@@ -36,7 +36,7 @@ impl PartialEq<Self> for Display {
         self.id == other.id
     }
 }
-
+unsafe impl Send for Display{}
 impl Eq for Display{
 
 }
