@@ -43,7 +43,7 @@ impl Eq for Display{
 
 impl ToString for Display{
     fn to_string(&self) -> String {
-        self.title.clone() + " " + get_target_dimensions(*Target::Display(self.clone())).0 +"x"+get_target_dimensions(*Target::Display(self.clone())).1
+        self.title.clone() + " " + get_target_dimensions(*Target::Display(self.clone())).0.to_string() +"x"+get_target_dimensions(*Target::Display(self.clone())).1.to_string()
     }
 }
 
