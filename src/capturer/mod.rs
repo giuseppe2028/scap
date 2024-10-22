@@ -34,7 +34,7 @@ impl Resolution {
             }
         }
     }
-   pub fn get_resolution(&self,width:u64)->Resolution{
+   pub fn get_resolution(width:u64)->Resolution{
         match width {
             0..=640 => Resolution::_480p,
             641..=1280 => Resolution::_720p,
