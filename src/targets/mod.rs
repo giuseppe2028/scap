@@ -31,6 +31,12 @@ pub struct Display {
     pub raw_handle: core_graphics_helmer_fork::display::CGDisplay,
 }
 
+impl Display {
+    pub fn get_width(&self)->u64{
+        get_target_dimensions(&Target::Display(*self.clone())).0
+    }
+}
+
 impl PartialEq<Self> for Display {
     fn eq(&self, other: &Self) -> bool {
         self.id == other.id
