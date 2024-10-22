@@ -12,7 +12,7 @@ pub enum Resolution {
     _480p,
     _720p,
     _1080p,
-    _1441p,
+    _1440p,
     _2160p,
     _4320p,
 
@@ -26,7 +26,7 @@ impl Resolution {
             Resolution::_480p => [640, ((640 as f32) / aspect_ratio).floor() as u32],
             Resolution::_720p => [1280, ((1280 as f32) / aspect_ratio).floor() as u32],
             Resolution::_1080p => [1920, ((1920 as f32) / aspect_ratio).floor() as u32],
-            Resolution::_1441p => [1440, ((1440 as f32) / aspect_ratio).floor() as u32],
+            Resolution::_1440p => [1440, ((1440 as f32) / aspect_ratio).floor() as u32],
             Resolution::_2160p => [3840, ((3840 as f32) / aspect_ratio).floor() as u32],
             Resolution::_4320p => [7680, ((7680 as f32) / aspect_ratio).floor() as u32],
             Resolution::Captured => {
@@ -34,7 +34,20 @@ impl Resolution {
             }
         }
     }
+    fn get_resolution(&self,width:usize)->Resolution{
+        match width {
+            0..=640 => Resolution::_480p,
+            641..=1280 => Resolution::_720p,
+            1281..=1440 => Resolution::_1440p,
+            1441..=1920 => Resolution::_1080p,
+            1921..=3840 => Resolution::_2160p,
+            3841..=7680 => Resolution::_4320p,
+            _ => { panic!(".value should not be called when Resolution type is Captured")}
+        }
+    }
 }
+
+
 
 #[derive(Debug, Default, Clone)]
 pub struct Point {

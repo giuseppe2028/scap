@@ -41,6 +41,7 @@ impl Eq for Display{
 
 }
 
+
 impl ToString for Display{
     fn to_string(&self) -> String {
         self.title.clone() + " " +
