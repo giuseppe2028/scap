@@ -85,7 +85,7 @@ pub struct Capturer {
     engine: engine::Engine,
     rx: mpsc::Receiver<Frame>,
 }
-
+unsafe impl Send for Capturer {}
 impl Capturer {
     /// Create a new capturer instance with the provided options
     pub fn new(options: Options) -> Capturer {
