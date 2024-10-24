@@ -36,10 +36,10 @@ impl GraphicsCaptureApiHandler for Capturer {
     type Flags = FlagStruct;
     type Error = Box<dyn std::error::Error + Send + Sync>;
 
-    fn new(flag_values: Self::Flags) -> Result<Self, Self::Error> {
+    fn new(flag_values: windows_capture::capture::Context<FlagStruct>) -> Result<Self, Self::Error> {
         Ok(Self {
-            tx: flag_values.tx,
-            crop: flag_values.crop,
+            tx: flag_values.flags.tx,
+            crop: flag_values.flags.crop,
         })
     }
 
@@ -62,7 +62,7 @@ impl GraphicsCaptureApiHandler for Capturer {
                     .expect("Failed to crop buffer");
 
                 // get raw frame buffer
-                let raw_frame_buffer = match cropped_buffer.as_raw_nopadding_buffer() {
+                let raw_frame_buffer = match cropped_buffer.as_nopadding_buffer() {
                     Ok(buffer) => buffer,
                     Err(_) => return Err(("Failed to get raw buffer").into()),
                 };
