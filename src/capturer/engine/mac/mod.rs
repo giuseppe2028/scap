@@ -25,7 +25,7 @@ mod pixelformat;
 struct ErrorHandler;
 impl StreamErrorHandler for ErrorHandler {
     fn on_error(&self) {
-        println!("Error!");
+        println!("Error! Prova123");
     }
 }
 
